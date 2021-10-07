@@ -1,11 +1,11 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { GetMovies } from "../services";
+import { GetMovies, GetMovieDetails } from "../services";
 
 export const initialState = {
     movies: { Search: [] },
     loading: false,
     error: null,
-    singleMovie: {}
+    singleMovie: undefined
 };
 
 export const movieSlice = createSlice({
@@ -29,7 +29,16 @@ export const movieSlice = createSlice({
             state.movies = initialState.movies;
             state.error = payload.error
         },
-
+        [GetMovieDetails.fulfilled]: (state, action) => {
+            const { payload } = action
+            console.log("Details", { payload })
+            state.singleMovie = payload.data
+        },
+        [GetMovieDetails.rejected]: (state, action) => {
+            const { payload } = action
+            state.singleMovie = initialState.singleMovie;
+            state.error = payload.error
+        }
     },
 });
 

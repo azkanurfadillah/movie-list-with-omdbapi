@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Box, Flex, Container, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Image } from '@chakra-ui/image';
@@ -7,6 +8,7 @@ import { Skeleton } from '@chakra-ui/skeleton';
 import { GetMovies } from 'store/services';
 
 const SearchResult = () => {
+    let history = useHistory();
     const dispatch = useDispatch();
     const { movies, loading, error, } = useSelector((state) => state.movies);
     const availablePage = movies?.totalResults ? Math.ceil(movies.totalResults / 10) : 0
@@ -29,7 +31,9 @@ const SearchResult = () => {
         <Flex wrap="wrap" gridRowGap="6" gridColumnGap="4" my="8">
             {movies?.Search.length ?
                 movies.Search.map(movie => (
-                    <Flex flex="1" direction="column" minW="198" maxW="208px" bgColor="twitter.100" p="4" borderRadius="md" justify="space-between">
+                    <Flex key={movie.imdbID}
+                        flex="1" direction="column" justify="space-between"
+                        minW="198" maxW="208px" bgColor="twitter.100" p="4" borderRadius="md" onClick={() => history.push(`/omdb/${movie.Title}`)}>
                         <Image
                             width="150px"
                             mx="auto"

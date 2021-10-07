@@ -8,7 +8,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ChakraProvider } from "@chakra-ui/provider";
 import { Container } from "@chakra-ui/layout";
 import theme from "theme";
+
 import MoviesList from "pages/MoviesList";
+import MovieDetails from "pages/MovieDetails";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +27,7 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/" component={MoviesList} />
+              <Route path="/omdb/:title" component={MovieDetails} />
               <Redirect to="/" />
             </Switch>
           </Router>

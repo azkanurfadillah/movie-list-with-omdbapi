@@ -1,10 +1,10 @@
 import React from 'react'
-
 import Autocomplete from "component/Autocomplete";
 import SearchResult from "component/SearchResult";
+
 const MoviesList = () => {
     return (
-        <div>
+        <>
             <Autocomplete
                 suggestions={[
                     'Hunger Games',
@@ -30,7 +30,7 @@ const MoviesList = () => {
                 ]}
             />
             <SearchResult />
-        </div>
+        </>
     )
 }
 
