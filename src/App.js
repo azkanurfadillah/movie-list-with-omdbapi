@@ -19,7 +19,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
-        <Container
+        <Container as="main"
           fontSize="sm"
           minH="100vh"
         >

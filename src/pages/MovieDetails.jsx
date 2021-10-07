@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Box, Flex, Container, Text } from "@chakra-ui/layout";
+import { Box, Flex, Container, Text, Heading } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
+import { Image } from '@chakra-ui/image';
 import { AlertIcon, Alert, AlertTitle, } from '@chakra-ui/alert';
 import { CloseButton } from '@chakra-ui/close-button';
 import { GetMovieDetails } from 'store/services';
@@ -29,9 +30,16 @@ const MovieDetails = () => {
         )
     }
     return (
-        <div>
-
-        </div>
+        <Box>
+            <Heading>{singleMovie.Title}</Heading>
+            <Image src={singleMovie.Poster} mx="auto" my="2" />
+            <Box as="section">
+                <Box>
+                    <Flex></Flex>
+                </Box>
+                <Text>{singleMovie?.Plot}</Text>
+            </Box>
+        </Box>
     )
 }
 
