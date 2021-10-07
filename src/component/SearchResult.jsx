@@ -22,10 +22,8 @@ const SearchResult = () => {
                 dispatch(GetMovies({ q: movies?.currentKeyword, page }))
 
             }
-            console.log(window.innerHeight, document.documentElement.scrollTop, document.documentElement.offsetHeight);
         }
     }
-    console.log({ availablePage, page });
 
     return (
         <Flex wrap="wrap" gridRowGap="6" gridColumnGap="4" my="8">

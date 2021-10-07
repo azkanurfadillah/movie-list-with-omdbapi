@@ -1,10 +1,15 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ChakraProvider } from "@chakra-ui/provider";
-import { Box, Flex, Container } from "@chakra-ui/layout";
+import { Container } from "@chakra-ui/layout";
 import theme from "theme";
+import MoviesList from "pages/MoviesList";
 
-import Autocomplete from "component/Autocomplete";
-import SearchResult from "component/SearchResult";
 const queryClient = new QueryClient();
 
 function App() {
@@ -17,29 +22,12 @@ function App() {
           minH="100vh"
         >
           Stockbit React Dev Test
-          <Autocomplete
-            suggestions={[
-              'Hunger Games',
-              'Wild',
-              'Batman',
-              'Game of Thrones',
-              'The Office',
-              'Jack Ryan',
-              'Forrest Gump',
-              'Spirited Away',
-              'Parasite',
-              'Whiplash',
-              'Spider-Man',
-              'Brave',
-              'Cruella',
-              'Money Heist',
-              'Breaking Bad',
-              'Interstellar',
-              'The Tomorrow War',
-              'Modern Family'
-            ]}
-          />
-          <SearchResult />
+          <Router>
+            <Switch>
+              <Route exact path="/" component={MoviesList} />
+              <Redirect to="/" />
+            </Switch>
+          </Router>
         </Container>
       </ChakraProvider>
     </QueryClientProvider>

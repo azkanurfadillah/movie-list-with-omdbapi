@@ -5,11 +5,15 @@ export const initialState = {
     movies: { Search: [] },
     loading: false,
     error: null,
+    singleMovie: {}
 };
 
 export const movieSlice = createSlice({
     name: "movie",
     initialState: initialState,
+    reducers: {
+        reset: () => initialState,
+    },
     extraReducers: {
         [GetMovies.fulfilled]: (state, action) => {
             const { payload } = action
@@ -17,16 +21,17 @@ export const movieSlice = createSlice({
             state.error = null
             state.movies = {
                 ...payload,
-                Search: [...prevState.movies.Search, ...payload.Search,]
+                Search: payload?.Search ? [...prevState.movies.Search, ...payload.Search,] : []
             }
         },
         [GetMovies.rejected]: (state, action) => {
             const { payload } = action
-            state.movies = [];
+            state.movies = initialState.movies;
             state.error = payload.error
         },
 
     },
 });
 
+export const { reset } = movieSlice.actions;
 export default movieSlice.reducer;
