@@ -36,11 +36,12 @@ const SearchResult = () => {
                 {movies?.Search.length ?
                     movies.Search.map(movie => (
                         <Flex key={movie.imdbID}
-                            flex="1" direction="column" justify="space-between"
+                            flex="1" direction="column"
                             minW="198px" maxW="232px" bgColor="twitter.100" p="4" borderRadius="md" >
                             <Image
-                                width="150px"
+                                width="100%"
                                 mx="auto"
+                                objectFit="cover"
                                 src={movie.Poster}
                                 onLoad={() => setLoadedImage(prevSate => [...prevSate, movie.imdbID])}
                                 display={loadedImage.includes(movie.imdbID) ? "block" : "none"}
@@ -55,8 +56,7 @@ const SearchResult = () => {
                                 onMouseLeave={() => setViewDetails({ status: false, id: "" })}
                                 _hover={{ cursor: "pointer" }}
                             >
-                                <Box
-                                >
+                                <Box >
                                     <Flex justify="space-between">
                                         <Text>{movie.Type}</Text>
                                         <Text>{movie.Year}</Text>
