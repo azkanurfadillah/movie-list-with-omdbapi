@@ -17,6 +17,13 @@ You will also see any lint errors in the console.
 **ps: if you don't have `node_modules` folder yet after you clone this project, make sure to run `npm install` before you run `npm start`.
 **
 
+## Library that i used
+[axios](https://www.npmjs.com/package/axios) to make HTTP requests
+[react-router-dom](https://www.npmjs.com/package/react-router-dom) for handle routing
+[Redux Toolkit](https://www.npmjs.com/package/@reduxjs/toolkit) for state management
+[Chakra UI](https://www.npmjs.com/package/@chakra-ui/react) as component library
+
+
 ## User Flow
 
 This is how `home page` looks like, ya i know, you only got this input component but don't worry
