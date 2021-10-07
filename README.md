@@ -32,18 +32,17 @@ Each data of results i put inside card.
 
 ![Screenshot from 2021-10-07 18-55-46](https://user-images.githubusercontent.com/44330480/136379644-c4b06718-ef71-4c65-8253-9de70ab11c3d.png)
 
-
-You can click the image to see full size of its movie poster,
+You can `click the image` to see full size of its movie poster,
 
 ![Screenshot from 2021-10-07 18-56-02](https://user-images.githubusercontent.com/44330480/136379665-cbeea8cf-a41e-403a-b4bd-3079ebe63675.png)
 
-or you can click the `Details` box to direct your page to `movie details page`.
+or you can `click the Details box` to direct your page to `movie details page`.
 
 ![Screenshot from 2021-10-07 20-02-14](https://user-images.githubusercontent.com/44330480/136389406-ce04f57c-502b-4e43-9f47-698b9db635e4.png)
 
-And here's what page of movie details` looks like.
+And here's what page of `movie details` looks like.
 
 ![Screenshot from 2021-10-07 20-02-29](https://user-images.githubusercontent.com/44330480/136389464-871b59c6-555b-4bf4-9ca4-baa2487119fa.png)
 
-**ps: you can scroll down to the bottom of page to get the more result (if any)**
+**ps: at `home page` you can scroll down to the bottom of page to get the more result (if any)**
 
