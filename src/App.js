@@ -1,19 +1,14 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ChakraProvider } from "@chakra-ui/provider";
 import { Box, Flex, Container } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
-import { useSelector } from "react-redux";
 import theme from "theme";
 
 import Autocomplete from "component/Autocomplete";
+import SearchResult from "component/SearchResult";
 const queryClient = new QueryClient();
 
 function App() {
 
-
-  const movies = useSelector((state) => state.movies);
-
-  console.log({ movies })
   return (
     <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
@@ -44,6 +39,7 @@ function App() {
               'Modern Family'
             ]}
           />
+          <SearchResult />
         </Container>
       </ChakraProvider>
     </QueryClientProvider>

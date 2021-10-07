@@ -32,7 +32,8 @@ const Autocomplete = ({ suggestions }) => {
         // User pressed the enter key
         if (e.keyCode === 13) {
             console.log("handle enter", { userInput });
-            dispatch(GetMovies(userInput))
+            setShowSuggestions(false)
+            dispatch(GetMovies({ q: userInput }))
 
         }
     };
@@ -41,7 +42,7 @@ const Autocomplete = ({ suggestions }) => {
         setUserInput(payload)
         setShowSuggestions(false)
         console.log("handle click suggestion", { payload });
-        dispatch(GetMovies(payload))
+        dispatch(GetMovies({ q: payload }))
     };
 
     return (
