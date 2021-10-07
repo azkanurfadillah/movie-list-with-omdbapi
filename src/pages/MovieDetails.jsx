@@ -8,6 +8,7 @@ import { chakra } from '@chakra-ui/system';
 import { CloseButton } from '@chakra-ui/close-button';
 
 import { GetMovieDetails } from 'store/services';
+import { Skeleton } from '@chakra-ui/skeleton';
 
 const MovieDetails = () => {
     const dispatch = useDispatch()
@@ -36,7 +37,13 @@ const MovieDetails = () => {
                 singleMovie?.Title ?
                     <Box>
                         <Heading>{singleMovie.Title}</Heading>
-                        <Image src={singleMovie.Poster} mx="auto" my="2" />
+                        {
+                            singleMovie.Poster.toLowerCase() !== "n/a"
+                                ?
+                                <Image src={singleMovie.Poster} mx="auto" my="2" />
+
+                                : <Skeleton speed={.5} fadeDuration={.8} height="420px" width="full" />
+                        }
                         <Box as="section">
                             <Box mb="4">
                                 <Text> <chakra.span fontWeight="bold">Director:</chakra.span>&nbsp;{singleMovie?.Director}</Text>
@@ -46,7 +53,10 @@ const MovieDetails = () => {
                                 <Text> <chakra.span fontWeight="bold">Language:</chakra.span>&nbsp;{singleMovie?.Language}</Text>
                                 <Text> <chakra.span fontWeight="bold">IMDB Rating:</chakra.span>&nbsp;{singleMovie?.imdbRating}</Text>
                             </Box>
-                            <Text>{singleMovie?.Plot}</Text>
+                            <Text> <chakra.span fontWeight="bold">Plot:</chakra.span>
+                                <br />
+                                {singleMovie?.Plot}
+                            </Text>
                         </Box>
                     </Box>
                     : <Text>Loading</Text>
