@@ -22,8 +22,9 @@ function App() {
         <Container as="main"
           fontSize="sm"
           minH="100vh"
+          my="4"
+          p="0"
         >
-          Stockbit React Dev Test
           <Router>
             <Switch>
               <Route exact path="/" component={MoviesList} />

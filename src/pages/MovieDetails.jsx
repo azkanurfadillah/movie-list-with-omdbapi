@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Box, Flex, Container, Text, Heading } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
+import { Box, Flex, Text, Heading } from "@chakra-ui/layout";
 import { Image } from '@chakra-ui/image';
 import { AlertIcon, Alert, AlertTitle, } from '@chakra-ui/alert';
+import { chakra } from '@chakra-ui/system';
 import { CloseButton } from '@chakra-ui/close-button';
+
 import { GetMovieDetails } from 'store/services';
 
 const MovieDetails = () => {
@@ -30,16 +31,27 @@ const MovieDetails = () => {
         )
     }
     return (
-        <Box>
-            <Heading>{singleMovie.Title}</Heading>
-            <Image src={singleMovie.Poster} mx="auto" my="2" />
-            <Box as="section">
-                <Box>
-                    <Flex></Flex>
-                </Box>
-                <Text>{singleMovie?.Plot}</Text>
-            </Box>
-        </Box>
+        <>
+            {
+                singleMovie?.Title ?
+                    <Box>
+                        <Heading>{singleMovie.Title}</Heading>
+                        <Image src={singleMovie.Poster} mx="auto" my="2" />
+                        <Box as="section">
+                            <Box mb="4">
+                                <Text> <chakra.span fontWeight="bold">Director:</chakra.span>&nbsp;{singleMovie?.Director}</Text>
+                                <Text> <chakra.span fontWeight="bold">Writer:</chakra.span>&nbsp;{singleMovie?.Writer}</Text>
+                                <Text> <chakra.span fontWeight="bold">Type:</chakra.span>&nbsp;{singleMovie?.Type}</Text>
+                                <Text> <chakra.span fontWeight="bold">Released:</chakra.span>&nbsp;{singleMovie?.Released}</Text>
+                                <Text> <chakra.span fontWeight="bold">Language:</chakra.span>&nbsp;{singleMovie?.Language}</Text>
+                                <Text> <chakra.span fontWeight="bold">IMDB Rating:</chakra.span>&nbsp;{singleMovie?.imdbRating}</Text>
+                            </Box>
+                            <Text>{singleMovie?.Plot}</Text>
+                        </Box>
+                    </Box>
+                    : <Text>Loading</Text>
+            }
+        </>
     )
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box } from '@chakra-ui/layout';
 import Autocomplete from "component/Autocomplete";
 import SearchResult from "component/SearchResult";
 

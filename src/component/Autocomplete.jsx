@@ -1,7 +1,7 @@
 import React, { useState, } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { Input } from "@chakra-ui/input";
-import { Box, Flex } from "@chakra-ui/layout";
+import { Box, Flex, Text } from "@chakra-ui/layout";
 
 import { GetMovies } from 'store/services';
 import { reset } from 'store/features/movie';
@@ -46,9 +46,8 @@ const Autocomplete = ({ suggestions }) => {
     };
 
     return (
-        <div>
+        <Box position="fixed" top="0" py="18px" bgColor="white" maxW="inherit" w="inherit" zIndex="sticky">
             <Input
-                pr="4.5rem"
                 placeholder="Enter movie/series title"
                 value={userInput}
                 onChange={handleOnChange}
@@ -79,7 +78,10 @@ const Autocomplete = ({ suggestions }) => {
                     </Box>
                     : <> </>
             }
-        </div>
+            {
+                movies.Response === "True" && <Text>Showing {movies?.Search.length} of {movies.totalResults}</Text>
+            }
+        </Box>
     )
 }
 
