@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Box, Text, Heading } from "@chakra-ui/layout";
 import { Image } from '@chakra-ui/image';
 import { AlertIcon, Alert, AlertTitle, } from '@chakra-ui/alert';
 import { chakra } from '@chakra-ui/system';
 import { CloseButton } from '@chakra-ui/close-button';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 
 import { GetMovieDetails } from 'store/services';
 import { Skeleton } from '@chakra-ui/skeleton';
+import { Button } from '@chakra-ui/button';
 
 const MovieDetails = () => {
+    let history = useHistory();
     const dispatch = useDispatch()
     const { title } = useParams()
     const { singleMovie, error } = useSelector((state) => state.movies);
@@ -23,11 +26,18 @@ const MovieDetails = () => {
 
     if (singleMovie?.Response === "False" || error?.Error) {
         return (
-            <Alert status="error">
-                <AlertIcon />
-                <AlertTitle mr={2}>{error?.Error || singleMovie?.Error}</AlertTitle>
-                <CloseButton position="absolute" right="8px" top="8px" />
-            </Alert>
+            <>
+                <Button variant="unstyled" onClick={() => history.push("/")}>
+                    <ArrowBackIcon w={6} h={6} color="twitter.500" mr="1" />
+                    Home
+                </Button>
+                <Alert status="error">
+                    <AlertIcon />
+                    <AlertTitle mr={2}>{error?.Error || singleMovie?.Error}</AlertTitle>
+                    <CloseButton position="absolute" right="8px" top="8px" />
+                </Alert>
+
+            </>
         )
     }
     return (
@@ -35,6 +45,10 @@ const MovieDetails = () => {
             {
                 singleMovie?.Title ?
                     <Box>
+                        <Button variant="unstyled" onClick={() => history.push("/")}>
+                            <ArrowBackIcon w={6} h={6} color="twitter.500" mr="1" />
+                            Home
+                        </Button>
                         <Heading>{singleMovie.Title}</Heading>
                         {
                             singleMovie.Poster.toLowerCase() !== "n/a"
