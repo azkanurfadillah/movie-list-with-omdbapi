@@ -18,10 +18,10 @@ You will also see any lint errors in the console.
 **
 
 ## Library that i used
-[axios](https://www.npmjs.com/package/axios) to make HTTP requests
-[react-router-dom](https://www.npmjs.com/package/react-router-dom) for handle routing
-[Redux Toolkit](https://www.npmjs.com/package/@reduxjs/toolkit) for state management
-[Chakra UI](https://www.npmjs.com/package/@chakra-ui/react) as component library
+[axios](https://www.npmjs.com/package/axios) to make HTTP requests.\
+[react-router-dom](https://www.npmjs.com/package/react-router-dom) for handle routing.\
+[Redux Toolkit](https://www.npmjs.com/package/@reduxjs/toolkit) for state management.\
+[Chakra UI](https://www.npmjs.com/package/@chakra-ui/react) as component library.\
 
 
 ## User Flow
