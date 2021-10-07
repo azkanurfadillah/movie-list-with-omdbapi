@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Box, Flex, Text, Heading } from "@chakra-ui/layout";
+import { Box, Text, Heading } from "@chakra-ui/layout";
 import { Image } from '@chakra-ui/image';
 import { AlertIcon, Alert, AlertTitle, } from '@chakra-ui/alert';
 import { chakra } from '@chakra-ui/system';
@@ -14,7 +14,6 @@ const MovieDetails = () => {
     const dispatch = useDispatch()
     const { title } = useParams()
     const { singleMovie, error } = useSelector((state) => state.movies);
-    console.log({ singleMovie, error });
 
     useEffect(() => {
         if (title) {

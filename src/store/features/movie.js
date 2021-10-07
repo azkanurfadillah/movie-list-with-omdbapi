@@ -31,7 +31,6 @@ export const movieSlice = createSlice({
         },
         [GetMovieDetails.fulfilled]: (state, action) => {
             const { payload } = action
-            console.log("Details", { payload })
             state.singleMovie = payload.data
         },
         [GetMovieDetails.rejected]: (state, action) => {

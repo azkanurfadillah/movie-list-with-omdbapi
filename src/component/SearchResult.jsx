@@ -12,19 +12,21 @@ import { GetMovies } from 'store/services';
 const SearchResult = () => {
     let history = useHistory();
     const dispatch = useDispatch();
-    const { movies, loading, error, } = useSelector((state) => state.movies);
+    const { movies, error, } = useSelector((state) => state.movies);
     const availablePage = movies?.totalResults ? Math.ceil(movies.totalResults / 10) : 0
     const [loadedImage, setLoadedImage] = useState([])
     const [page, setPage] = useState(2)
     const [modal, setModal] = useState({ status: false, imageURL: "" })
     const [viewDetails, setViewDetails] = useState({ status: false, id: "" })
-    console.log({ movies, error, })
 
     window.onscroll = () => {
         if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
             if (page <= availablePage && movies?.currentKeyword) {
-                setPage(page + 1)
-                dispatch(GetMovies({ q: movies?.currentKeyword, page }))
+                if (movies?.Search.length < parseInt(movies.totalResults)) {
+                    setPage(page + 1)
+                    dispatch(GetMovies({ q: movies?.currentKeyword, page }))
+                }
+
 
             }
         }
@@ -32,7 +34,7 @@ const SearchResult = () => {
 
     return (
         <Box>
-            <Flex wrap="wrap" gridRowGap="6" gridColumnGap="4" my="102px">
+            <Flex wrap="wrap" gridRowGap="6" gridColumnGap="4" mt="102px" mb="8">
                 {movies?.Search.length ?
                     movies.Search.map(movie => (
                         <Flex key={movie.imdbID}

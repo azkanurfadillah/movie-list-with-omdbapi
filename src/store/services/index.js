@@ -19,9 +19,7 @@ export const GetMovies = createAsyncThunk(
 export const GetMovieDetails = createAsyncThunk(
     "movie/getDetails", async ({ title }, thunkAPI) => {
         try {
-            console.log({ tit: title })
             const response = await axios.get(`${BASE_URL}&t=${title}&plot=full`);
-            console.log({ response })
             return response
         } catch (error) {
             console.error({ error })
